@@ -1,54 +1,56 @@
-# React + TypeScript + Vite
+# Consulta de CEP - React, TypeScript e TailwindCSS  
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Projeto desenvolvido como parte do **Desafio Técnico - Desenvolvedor(a) Frontend**. A aplicação permite que usuários consultem endereços via **API do ViaCEP**, armazenem localmente e listem os dados salvos.  
 
-Currently, two official plugins are available:
+## Tecnologias Utilizadas  
+- **React** com **TypeScript**  
+- **TailwindCSS** para estilização  
+- **Fetch API** para requisições HTTP  
+- **LocalStorage** para persistência de dados  
+- **Cache Local** para otimização de requisições  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Funcionalidades  
+✅ Campo de entrada para o **CEP** com formatação automática.  
+✅ Consulta à API do **ViaCEP** ao sair do campo ou pressionar o botão.  
+✅ Preenchimento automático dos dados retornados.  
+✅ **Botão "Salvar"** para armazenar endereços localmente.  
+✅ **Listagem** dos endereços salvos.  
+✅ **Cache Local** para evitar requisições desnecessárias.  
+✅ Interface **responsiva e estilizada** com TailwindCSS.
 
-## Expanding the ESLint configuration
+## Instalação e execução  
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Clone este repositório
+```sh
+git clone https://github.com/seu-usuario/consulta-cep.git
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+cd consulta-cep
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+### Instale as dependências
+```sh
+npm install
 ```
+
+### Inicie o servidor de desenvolvimento
+```sh
+npm run dev
+```
+A aplicação estará disponível em http://localhost:5173/
+
+## Decisões técnicas  
+- **Componentização:** O código foi dividido em componentes reutilizáveis, como SearchInput, AddressDetails e SavedAddressesDetails. Isso melhora a organização e manutenção do projeto.
+- **Cache Local:** Implementado usando useState para evitar requisições desnecessárias ao ViaCEP. Se um CEP já foi buscado, os dados são carregados do cache.
+- **Persistência de dados:** Utilizado localStorage para manter os endereços salvos, garantindo que o usuário não perca os dados ao recarregar a página.
+- **Formatação do CEP:** Criada uma função formatCEP para padronizar a entrada do usuário. Outra função, cleanCEP, remove a formatação antes de fazer a requisição.
+- **Design responsivo:** TailwindCSS foi usado para criar uma interface moderna e responsiva.
+
+## Declaração de uso de IA 
+Este projeto foi desenvolvido por mim, com o auxílio do ChatGPT para:
+
+- Esclarecimento de dúvidas sobre alguns pontos do desafio.
+- Sugestões de layout.
+- Revisão e sugestões para melhoria do código.
+- Análise de possíveis erros e refatoração.
+  
+Todas as decisões de implementação, estruturação do código e lógica foram feitas por mim, com base nos requisitos do desafio.
